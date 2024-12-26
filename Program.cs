@@ -37,7 +37,8 @@ namespace Coinflip
                     Console.WriteLine();
                     Console.WriteLine($"Here's the result of flipping the coin {amount} times:");
                     Console.WriteLine();
-                    for (int i = 0; i < amount; i++)
+                    
+                    for (int i = 0; i < amount; i++) // Iterate through all the coinflips
                     {
                         flipArray.Add((rand.Next(0, 101) > 50 ? "Heads" : "Tails"));
                         if (i == amount - 1)
