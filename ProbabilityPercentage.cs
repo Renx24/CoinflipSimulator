@@ -22,7 +22,7 @@ namespace Coinflip
             return result;
         }
 
-        // Method to calculate combinations: n choose k (nCk)
+        // Method to calculate combinations
         private static double Combinations(int n, int k)
         {
             return Factorial(n) / (Factorial(k) * Factorial(n - k));
