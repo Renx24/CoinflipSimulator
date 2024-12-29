@@ -12,15 +12,13 @@ namespace Coinflip
             while (goAgain == "y")
             {
                 Console.WriteLine("Coinflip simulator.");
-                Console.WriteLine("Please enter amount of coinflips. Amount <= 100 also shows probability of the scenario happening.");
-                Console.WriteLine();
+                Console.WriteLine("Please enter amount of coinflips. Amount <= 100 also shows probability of the scenario happening.\n");
                 string amountStr = Console.ReadLine();
                 int amount;
 
                 // While "input is incorrect" logic
                 while (!int.TryParse(amountStr, out amount) || int.Parse(amountStr) <= 0) {
-                    Console.WriteLine();
-                    Console.WriteLine("Invalid input, please enter a positive number.");
+                    Console.WriteLine("\nInvalid input, please enter a positive number.");
                     amountStr = Console.ReadLine();
                 }
                 
@@ -28,15 +26,11 @@ namespace Coinflip
                 // Hard-coded for only one coinflip
                 if (amount == 1)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine($"{(rand.Next(0, 101) > 50 ? "Heads" : "Tails")}");
-                    Console.WriteLine();
+                    Console.WriteLine($"\n{(rand.Next(0, 101) > 50 ? "Heads" : "Tails")}\n");
                 }
                 else
                 {
-                    Console.WriteLine();
-                    Console.WriteLine($"Here's the result of flipping the coin {amount} times:");
-                    Console.WriteLine();
+                    Console.WriteLine($"\nHere's the result of flipping the coin {amount} times:\n");
                     for (int i = 0; i < amount; i++)
                     {
                         flipArray.Add((rand.Next(0, 101) > 50 ? "Heads" : "Tails"));
@@ -46,20 +40,18 @@ namespace Coinflip
                             int headsAmount = flipArray.Count(x => x == "Heads");
                             int tailsAmount = flipArray.Count(x => x == "Tails");
                             Console.WriteLine($"{headsAmount} heads.");
-                            Console.WriteLine($"{tailsAmount} tails.");
-                            Console.WriteLine();
+                            Console.WriteLine($"{tailsAmount} tails.\n");
 
                             // Calculate and display probability of this exact scenario happening if amount <= 100
                             double probability = ProbabilityPercentage.CalculateProbability(amount, headsAmount);
                             if (amount <= 100)
                             {
-                                Console.WriteLine($"The probability of getting exactly {headsAmount} heads and {tailsAmount} tails is {probability:F2}%.");
-                                Console.WriteLine();
+                                Console.WriteLine($"The probability of getting exactly {headsAmount} heads and {tailsAmount} tails is {probability:F2}%.\n");
                             }
 
                             // Boolean to view list according to prompt by user
                             string seeList = "n";
-                            Console.WriteLine("Do you want to see the list to verify? (y/n)");
+                            Console.WriteLine("Do you want to see the list to verify? (y/n)\n");
                             seeList = Console.ReadLine();
 
                             if (seeList == "y")
@@ -75,7 +67,7 @@ namespace Coinflip
                 }
                 // Reset flipArray and ask user if they would like to flip again
                 flipArray.Clear();
-                Console.WriteLine("Want to try again? (y/n)");
+                Console.WriteLine("Want to try again? (y/n)\n");
                 goAgain = Console.ReadLine();
                 Console.WriteLine();
             }
